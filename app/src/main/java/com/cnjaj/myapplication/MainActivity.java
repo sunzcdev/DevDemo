@@ -28,4 +28,8 @@ public class MainActivity extends AppCompatActivity {
     public void openAlbum(View view) {
         startActivity(new Intent(this, AlbumActivity.class));
     }
+
+    public void openClock(View view) {
+        startActivity(new Intent(this, ClockActivity.class));
+    }
 }

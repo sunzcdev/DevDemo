@@ -35,4 +35,9 @@
         android:onClick="openAlbum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+    <Button
+        android:text="时钟"
+        android:onClick="openClock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 </LinearLayout>

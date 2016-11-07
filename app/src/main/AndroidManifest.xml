@@ -3,6 +3,7 @@
           package="com.cnjaj.myapplication">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
     <application
         android:name=".MyApp"
         android:allowBackup="true"
@@ -20,6 +21,8 @@
         <activity android:name=".LoginActivity">
         </activity>
         <activity android:name=".AlbumActivity">
+        </activity>
+        <activity android:name=".ClockActivity">
         </activity>
     </application>
 
