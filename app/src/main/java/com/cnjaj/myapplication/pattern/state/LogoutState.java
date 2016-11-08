@@ -1,4 +1,4 @@
-package com.cnjaj.myapplication;
+package com.cnjaj.myapplication.pattern.state;
 
 import android.content.Context;
 import android.content.Intent;

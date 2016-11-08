@@ -1,7 +1,8 @@
-package com.cnjaj.myapplication;
+package com.cnjaj.myapplication.pattern.state;
 
 import android.content.Context;
 import android.widget.Toast;
+import com.cnjaj.myapplication.utils.ViewUtils;
 
 /**
  * Created by Administrator on 2016/11/1.

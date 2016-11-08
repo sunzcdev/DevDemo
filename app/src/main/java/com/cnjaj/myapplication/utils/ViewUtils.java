@@ -1,19 +1,15 @@
-package com.cnjaj.myapplication;
+package com.cnjaj.myapplication.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.cnjaj.myapplication.pattern.state.User;
 
 /**
  * Created by Administrator on 2016/11/1.
  */
 public class ViewUtils {
-    private static final String USER_LIST = "userList";
     private static Toast mToast;
-    private static List<String> mUsers = new ArrayList<>();
 
     public static void toast(Context context, String msg) {
         if (mToast == null) {

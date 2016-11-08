@@ -1,4 +1,4 @@
-package com.cnjaj.myapplication;
+package com.cnjaj.myapplication.pattern.state;
 
 import android.content.Context;
 
@@ -11,5 +11,4 @@ public interface UserState {
     void comment(Context context, String comment);
 
     void lookGood(Context context);
-
 }

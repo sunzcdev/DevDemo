@@ -1,35 +1,83 @@
 package com.cnjaj.myapplication;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+import com.cnjaj.myapplication.pattern.state.StatePatternActivity;
+import com.cnjaj.myapplication.rx.RxActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    private List<NavigationItem> mNavigationList = new ArrayList<NavigationItem>() {
+        {
+            add(new NavigationItem("状态模式演示", StatePatternActivity.class));
+            add(new NavigationItem("系统相册", AlbumActivity.class));
+            add(new NavigationItem("自定义钟表", ClockActivity.class));
+            add(new NavigationItem("Rx测试", RxActivity.class));
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ListView mNavigationPanel = (ListView) findViewById(R.id.navigation_panel);
+        final NavigationAdapter navigationAdapter = new NavigationAdapter();
+        mNavigationPanel.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                startActivity(new Intent(MainActivity.this, navigationAdapter.getItem(i).aClass));
+            }
+        });
+        mNavigationPanel.setAdapter(navigationAdapter);
+
     }
 
-    public void comment(View view) {
-        ((MyApp) getApplication()).getCurrentState().comment(this, "这个商品挺不错的，值得买");
+    private static class NavigationItem {
+        String title;
+        Class<? extends Activity> aClass;
+
+        NavigationItem(String key, Class<? extends Activity> clazz) {
+            title = key;
+            aClass = clazz;
+        }
     }
 
-    public void lookGoods(View view) {
-        ((MyApp) getApplication()).getCurrentState().lookGood(this);
-    }
+    private class NavigationAdapter extends BaseAdapter {
+        @Override
+        public int getCount() {
+            return mNavigationList.size();
+        }
 
-    public void logout(View view) {
-        ((MyApp) getApplication()).setUserState(new LogoutState());
-    }
+        @Override
+        public NavigationItem getItem(int i) {
+            return mNavigationList.get(i);
+        }
 
-    public void openAlbum(View view) {
-        startActivity(new Intent(this, AlbumActivity.class));
-    }
+        @Override
+        public long getItemId(int i) {
+            return i;
+        }
 
-    public void openClock(View view) {
-        startActivity(new Intent(this, ClockActivity.class));
+        @Override
+        public View getView(int i, View view, ViewGroup viewGroup) {
+            TextView textView;
+            if (view == null) {
+                view = LayoutInflater.from(viewGroup.getContext()).inflate(android.R.layout.simple_list_item_1, null);
+            }
+            textView = (TextView) view.findViewById(android.R.id.text1);
+            textView.setText(getItem(i).title);
+            return view;
+        }
     }
 }

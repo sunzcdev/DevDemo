@@ -1,4 +1,4 @@
-package com.cnjaj.myapplication;
+package com.cnjaj.myapplication.pattern.state;
 
 /**
  * Created by Administrator on 2016/11/1.
@@ -7,7 +7,10 @@ public class User {
     private String name;
     private int age;
     private String token;
-User(){}
+
+    User() {
+    }
+
     public User(String name, int age, String token) {
         this.name = name;
         this.age = age;
