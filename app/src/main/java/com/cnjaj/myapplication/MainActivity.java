@@ -12,7 +12,7 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.cnjaj.myapplication.pattern.state.StatePatternActivity;
-import com.cnjaj.myapplication.rx.RxActivity;
+import com.cnjaj.myapplication.rx.weather.RxActivity;
 
 import java.util.ArrayList;
 import java.util.List;

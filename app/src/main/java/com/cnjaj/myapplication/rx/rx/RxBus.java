@@ -1,4 +1,4 @@
-package com.cnjaj.myapplication.rx;
+package com.cnjaj.myapplication.rx.rx;
 
 import android.support.annotation.NonNull;
 import com.cnjaj.myapplication.utils.SLog;

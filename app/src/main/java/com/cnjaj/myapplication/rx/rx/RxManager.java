@@ -1,4 +1,4 @@
-package com.cnjaj.myapplication.rx;
+package com.cnjaj.myapplication.rx.rx;
 
 import rx.Observable;
 import rx.Subscription;
