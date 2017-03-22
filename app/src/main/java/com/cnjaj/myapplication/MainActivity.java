@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import com.cnjaj.myapplication.pattern.state.StatePatternActivity;
 import com.cnjaj.myapplication.rx.weather.RxActivity;
+import com.cnjaj.myapplication.service.MessengerActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
             add(new NavigationItem("系统相册", AlbumActivity.class));
             add(new NavigationItem("自定义钟表", ClockActivity.class));
             add(new NavigationItem("Rx测试", RxActivity.class));
+            add(new NavigationItem("服务测试", MessengerActivity.class));
         }
     };
 

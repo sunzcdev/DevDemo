@@ -24,6 +24,10 @@
         <activity android:name=".ClockActivity"/>
         <activity android:name=".pattern.state.StatePatternActivity"/>
         <activity android:name=".rx.weather.RxActivity"/>
+
+        <activity android:name=".service.MessengerActivity"/>
+
+        <service android:name=".service.MyService"/>
     </application>
 
 </manifest>

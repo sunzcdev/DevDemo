@@ -1,6 +1,7 @@
 package com.cnjaj.myapplication.utils;
 
 import android.support.v4.BuildConfig;
+import com.cnjaj.myapplication.MyApp;
 
 /**
  * 自定义Log类
@@ -11,11 +12,33 @@ import android.support.v4.BuildConfig;
  * Created by Administrator on 2016/11/8.
  */
 public class SLog {
-    public static boolean DEBUG = !BuildConfig.BUILD_TYPE.equals("release");
+    private static boolean DEBUG = !BuildConfig.BUILD_TYPE.equals("release");
+    private static String mTAG = MyApp.getApp().getPackageName();
+    private static boolean isLocal;
+
+    /**
+     * @param tag     添加一个全局的tag
+     * @param isLocal 是否本地化保存
+     */
+    public static void init(String tag, boolean isLocal) {
+        mTAG = tag;
+        SLog.isLocal = isLocal;
+    }
+
+    public static void v(String message) {
+        v(mTAG, message);
+    }
+
+    public static void e(String message) {
+        e(mTAG, message);
+    }
 
     public static void v(String tag, String message) {
         if (DEBUG) {
             android.util.Log.v(tag, message);
+            if (isLocal) {
+
+            }
         }
     }
 
@@ -23,6 +46,10 @@ public class SLog {
         if (DEBUG) {
             android.util.Log.d(tag, message);
         }
+    }
+
+    public static void i(String message) {
+        i(mTAG, message);
     }
 
     public static void i(String tag, String message) {
