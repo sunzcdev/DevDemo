@@ -1,4 +1,4 @@
-package com.cnjaj.myapplication;
+package com.cnjaj.myapplication.ui.activity;
 
 import android.Manifest;
 import android.content.Context;
@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.CursorAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+import com.cnjaj.myapplication.R;
 
 import java.util.HashMap;
 

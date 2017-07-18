@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.cnjaj.myapplication.AlbumActivity">
+    tools:context=".ui.activity.AlbumActivity">
 
     <GridView
         android:id="@+id/album_gv"
-        android:horizontalSpacing="3dp"
-        android:verticalSpacing="3dp"
-        android:numColumns="3"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:horizontalSpacing="3dp"
+        android:numColumns="3"
+        android:verticalSpacing="3dp"/>
 </RelativeLayout>

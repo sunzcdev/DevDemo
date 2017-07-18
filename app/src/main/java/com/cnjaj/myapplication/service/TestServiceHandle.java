@@ -5,12 +5,12 @@ import android.os.Messenger;
 import android.os.RemoteException;
 import com.cnjaj.myapplication.service.service.IHandle;
 import com.cnjaj.myapplication.service.service.StaticHandler;
-import com.cnjaj.myapplication.utils.SLog;
+import com.cnjaj.myapplication.utils.MyLog;
 
 public class TestServiceHandle implements IHandle {
     @Override
     public void onSessionCreate(Messenger messenger) {
-        SLog.i("当前服务端接收到会话建立");
+        MyLog.i("TestServiceHandle", "当前服务端接收到会话建立");
         Message msg = Message.obtain();
         msg.obj = "你好";
         msg.what = StaticHandler.RECEIVE;

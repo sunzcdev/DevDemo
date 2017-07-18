@@ -1,4 +1,4 @@
-package com.cnjaj.myapplication;
+package com.cnjaj.myapplication.ui.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import com.cnjaj.myapplication.R;
 import com.cnjaj.myapplication.pattern.state.StatePatternActivity;
 import com.cnjaj.myapplication.rx.weather.RxActivity;
 import com.cnjaj.myapplication.service.MessengerActivity;
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
             add(new NavigationItem("自定义钟表", ClockActivity.class));
             add(new NavigationItem("Rx测试", RxActivity.class));
             add(new NavigationItem("服务测试", MessengerActivity.class));
+            add(new NavigationItem("照相测试", CameraActivity.class));
         }
     };
 

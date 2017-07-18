@@ -1,7 +1,6 @@
 package com.cnjaj.myapplication.rx.rx;
 
 import android.support.annotation.NonNull;
-import com.cnjaj.myapplication.utils.SLog;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
@@ -96,8 +95,8 @@ class RxBus {
                      @NonNull Observable<?> observable) {
         if (subjectMapper.containsKey(tag)) {
             List<Subject> subjects = subjectMapper.get(tag);
-            if (subjects.contains((Subject) observable)) {
-                subjects.remove((Subject) observable);
+            if (subjects.contains(observable)) {
+                subjects.remove(observable);
             } else {
                 subjectMapper.remove(tag);
                 SLog.d("unregister", tag + "  size:" + subjects.size());
