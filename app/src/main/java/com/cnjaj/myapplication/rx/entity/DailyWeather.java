@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by Administrator on 2016/11/8.
  */
-public class Weather {
+public class DailyWeather {
 
     private List<ResultsBean> results;
 
@@ -17,32 +17,16 @@ public class Weather {
         this.results = results;
     }
 
-    @Override
-    public String toString() {
-        return "Weather{" +
-                "results=" + results +
-                '}';
-    }
-
     public static class ResultsBean {
         /**
          * location : {"id":"WX4FBXXFKE4F","name":"北京","country":"CN","path":"北京,北京,中国","timezone":"Asia/Shanghai","timezone_offset":"+08:00"}
-         * daily : [{"date":"2016-11-10","text_day":"霾","code_day":"31","text_night":"多云","code_night":"4","high":"9","low":"1","precip":"","wind_direction":"无持续风向","wind_direction_degree":"","wind_speed":"10","wind_scale":"2"},{"date":"2016-11-11","text_day":"多云","code_day":"4","text_night":"晴","code_night":"0","high":"11","low":"1","precip":"","wind_direction":"无持续风向","wind_direction_degree":"","wind_speed":"10","wind_scale":"2"},{"date":"2016-11-12","text_day":"晴","code_day":"0","text_night":"霾","code_night":"31","high":"12","low":"2","precip":"","wind_direction":"无持续风向","wind_direction_degree":"","wind_speed":"10","wind_scale":"2"}]
-         * last_update : 2016-11-10T08:00:00+08:00
+         * daily : [{"date":"2015-09-20","text_day":"多云","code_day":"4","text_night":"晴","code_night":"0","high":"26","low":"17","precip":"0","wind_direction":"","wind_direction_degree":"255","wind_speed":"9.66","wind_scale":""},{"date":"2015-09-21","text_day":"晴","code_day":"0","text_night":"晴","code_night":"0","high":"27","low":"17","precip":"0","wind_direction":"","wind_direction_degree":"157","wind_speed":"17.7","wind_scale":"3"}]
+         * last_update : 2015-09-20T18:00:00+08:00
          */
 
         private LocationBean location;
         private String last_update;
         private List<DailyBean> daily;
-        private List<HourlyBean> hourly;
-
-        public List<HourlyBean> getHourly() {
-            return hourly;
-        }
-
-        public void setHourly(List<HourlyBean> hourly) {
-            this.hourly = hourly;
-        }
 
         public LocationBean getLocation() {
             return location;
@@ -84,18 +68,6 @@ public class Weather {
             private String path;
             private String timezone;
             private String timezone_offset;
-
-            @Override
-            public String toString() {
-                return "LocationBean{" +
-                        "id='" + id + '\'' +
-                        ", name='" + name + '\'' +
-                        ", country='" + country + '\'' +
-                        ", path='" + path + '\'' +
-                        ", timezone='" + timezone + '\'' +
-                        ", timezone_offset='" + timezone_offset + '\'' +
-                        '}';
-            }
 
             public String getId() {
                 return id;
@@ -144,108 +116,34 @@ public class Weather {
             public void setTimezone_offset(String timezone_offset) {
                 this.timezone_offset = timezone_offset;
             }
-        }
-
-        public static class HourlyBean {
-
-            /**
-             * time : 2016-11-10T11:00:00+08:00
-             * text : 晴
-             * code : 0
-             * temperature : 13
-             * humidity : 50
-             * wind_direction : 无持续风向
-             * wind_speed : 14.4
-             */
-
-            private String time;
-            private String text;
-            private String code;
-            private String temperature;
-            private String humidity;
-            private String wind_direction;
-            private String wind_speed;
 
             @Override
             public String toString() {
-                return "今天" + time + "的天气:\t" + text +
-                        "温度：\t" + temperature + "度\t" +
-                        "湿度: \t" + humidity + '\n' +
-                        "风向: \t" + wind_direction + '\t' +
-                        "风速" + wind_speed;
-            }
-
-            public String getTime() {
-                return time;
-            }
-
-            public void setTime(String time) {
-                this.time = time;
-            }
-
-            public String getText() {
-                return text;
-            }
-
-            public void setText(String text) {
-                this.text = text;
-            }
-
-            public String getCode() {
-                return code;
-            }
-
-            public void setCode(String code) {
-                this.code = code;
-            }
-
-            public String getTemperature() {
-                return temperature;
-            }
-
-            public void setTemperature(String temperature) {
-                this.temperature = temperature;
-            }
-
-            public String getHumidity() {
-                return humidity;
-            }
-
-            public void setHumidity(String humidity) {
-                this.humidity = humidity;
-            }
-
-            public String getWind_direction() {
-                return wind_direction;
-            }
-
-            public void setWind_direction(String wind_direction) {
-                this.wind_direction = wind_direction;
-            }
-
-            public String getWind_speed() {
-                return wind_speed;
-            }
-
-            public void setWind_speed(String wind_speed) {
-                this.wind_speed = wind_speed;
+                return "LocationBean{" +
+                        "id='" + id + '\'' +
+                        ", name='" + name + '\'' +
+                        ", country='" + country + '\'' +
+                        ", path='" + path + '\'' +
+                        ", timezone='" + timezone + '\'' +
+                        ", timezone_offset='" + timezone_offset + '\'' +
+                        '}';
             }
         }
 
         public static class DailyBean {
             /**
-             * date : 2016-11-10
-             * text_day : 霾
-             * code_day : 31
-             * text_night : 多云
-             * code_night : 4
-             * high : 9
-             * low : 1
-             * precip :
-             * wind_direction : 无持续风向
-             * wind_direction_degree :
-             * wind_speed : 10
-             * wind_scale : 2
+             * date : 2015-09-20
+             * text_day : 多云
+             * code_day : 4
+             * text_night : 晴
+             * code_night : 0
+             * high : 26
+             * low : 17
+             * precip : 0
+             * wind_direction :
+             * wind_direction_degree : 255
+             * wind_speed : 9.66
+             * wind_scale :
              */
 
             private String date;
@@ -260,16 +158,6 @@ public class Weather {
             private String wind_direction_degree;
             private String wind_speed;
             private String wind_scale;
-
-            @Override
-            public String toString() {
-                return date + "\t天气情况如下:\n" +
-                        "白天：\t" + text_day + "\t" +
-                        "夜晚:\t" + text_night + '\n' +
-                        "最高气温:\t" + high + "度\t" +
-                        "最低气温:" + low + "度\n" +
-                        "有" + wind_scale + "级风";
-            }
 
             public String getDate() {
                 return date;
@@ -365,6 +253,24 @@ public class Weather {
 
             public void setWind_scale(String wind_scale) {
                 this.wind_scale = wind_scale;
+            }
+
+            @Override
+            public String toString() {
+                return "DailyBean{" +
+                        "date='" + date + '\'' +
+                        ", text_day='" + text_day + '\'' +
+                        ", code_day='" + code_day + '\'' +
+                        ", text_night='" + text_night + '\'' +
+                        ", code_night='" + code_night + '\'' +
+                        ", high='" + high + '\'' +
+                        ", low='" + low + '\'' +
+                        ", precip='" + precip + '\'' +
+                        ", wind_direction='" + wind_direction + '\'' +
+                        ", wind_direction_degree='" + wind_direction_degree + '\'' +
+                        ", wind_speed='" + wind_speed + '\'' +
+                        ", wind_scale='" + wind_scale + '\'' +
+                        '}';
             }
         }
     }

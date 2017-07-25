@@ -30,14 +30,14 @@ public class AndroidCamera implements ICamera {
         }
         this.cameraId = cameraId;
         Camera.Parameters params = mCamera.getParameters();
-        SLog.i(params.getSupportedPreviewFormats().toString());
+        MyLog.i(TAG, params.getSupportedPreviewFormats().toString());
         params.setPictureFormat(ImageFormat.JPEG);
         params.setPreviewFormat(ImageFormat.NV21);
         // 自动对焦
         params.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
         mCamera.setParameters(params);
         setCameraPreviewOrientation(0);
-        SLog.i(TAG, "打开摄像机" + cameraId);
+        MyLog.i(TAG, "打开摄像机" + cameraId);
     }
 
     public static AndroidCamera open(int cameraId) throws IllegalStateException {
@@ -48,11 +48,11 @@ public class AndroidCamera implements ICamera {
 
     @Override
     public void takePhoto(final PhotoListener listener) {
-        SLog.i(TAG, "正在拍照");
+        MyLog.i(TAG, "正在拍照");
         mCamera.takePicture(null, null, new Camera.PictureCallback() {
             @Override
             public void onPictureTaken(byte[] bytes, Camera camera) {
-                SLog.i(TAG, "拍照成功" + bytes.length);
+                MyLog.i(TAG, "拍照成功" + bytes.length);
                 listener.fetchPhoto(bytes, BitmapFactory.decodeByteArray(bytes, 0, bytes.length));
             }
         });
@@ -95,7 +95,7 @@ public class AndroidCamera implements ICamera {
 
             @Override
             public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-                SLog.i(TAG, "surfaceChanged" + holder + "format:" + format + "width:" + width + "height" + height);
+                MyLog.i(TAG, "surfaceChanged" + holder + "format:" + format + "width:" + width + "height" + height);
             }
 
             @Override
@@ -111,7 +111,7 @@ public class AndroidCamera implements ICamera {
             return;
         }
         surfaceContainer.removeAllViews();
-        SLog.i(TAG, "相机开始预览");
+        MyLog.i(TAG, "相机开始预览");
         SurfaceView surfaceView = new SurfaceView(surfaceContainer.getContext());
         surfaceView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         surfaceContainer.addView(surfaceView);
@@ -125,7 +125,7 @@ public class AndroidCamera implements ICamera {
             mCamera.setPreviewCallback(cb);
         mCamera.setDisplayOrientation(0);
         mCamera.startPreview();
-        SLog.i(TAG, "相机正在预览" + holder);
+        MyLog.i(TAG, "相机正在预览" + holder);
     }
 
     private void setPreviewDisplay(SurfaceHolder holder) {
@@ -133,7 +133,7 @@ public class AndroidCamera implements ICamera {
             mCamera.setPreviewDisplay(holder);
         } catch (IOException e) {
             e.printStackTrace();
-            SLog.e(TAG, "摄像机预览失败: " + e.getMessage());
+            MyLog.e(TAG, "摄像机预览失败: " + e.getMessage());
             mCamera.stopPreview();
             setPreviewDisplay(holder);
         }
@@ -148,7 +148,7 @@ public class AndroidCamera implements ICamera {
         }
         mCamera.setPreviewCallback(null);
         mCamera.stopPreview();
-        SLog.i(TAG, "相机停止预览");
+        MyLog.i(TAG, "相机停止预览");
     }
 
     @Override
@@ -157,7 +157,7 @@ public class AndroidCamera implements ICamera {
             stopPreview();
             mCamera.release();
             mCamera = null;
-            SLog.i(TAG, "相机关闭");
+            MyLog.i(TAG, "相机关闭");
         }
     }
 

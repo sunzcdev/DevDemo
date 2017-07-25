@@ -15,11 +15,13 @@ import com.cnjaj.myapplication.R;
 import com.cnjaj.myapplication.pattern.state.StatePatternActivity;
 import com.cnjaj.myapplication.rx.weather.RxActivity;
 import com.cnjaj.myapplication.service.MessengerActivity;
+import com.jayfeng.lesscode.core.SharedPreferenceLess;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
     private List<NavigationItem> mNavigationList = new ArrayList<NavigationItem>() {
         {
             add(new NavigationItem("状态模式演示", StatePatternActivity.class));
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
             add(new NavigationItem("Rx测试", RxActivity.class));
             add(new NavigationItem("服务测试", MessengerActivity.class));
             add(new NavigationItem("照相测试", CameraActivity.class));
+            add(new NavigationItem("数据库测试", DbActivity.class));
         }
     };
 
@@ -40,11 +43,11 @@ public class MainActivity extends AppCompatActivity {
         mNavigationPanel.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                SharedPreferenceLess.$put(navigationAdapter.getItem(i).aClass.getSimpleName(), "onCreate");
                 startActivity(new Intent(MainActivity.this, navigationAdapter.getItem(i).aClass));
             }
         });
         mNavigationPanel.setAdapter(navigationAdapter);
-
     }
 
     private static class NavigationItem {

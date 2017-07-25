@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import com.cnjaj.myapplication.R;
 import com.cnjaj.myapplication.rx.base.BaseMVPActivity;
-import com.cnjaj.myapplication.rx.entity.Weather;
+import com.cnjaj.myapplication.rx.entity.DailyWeather;
 
 import java.util.List;
 
@@ -75,19 +75,21 @@ public class RxActivity extends BaseMVPActivity<Presenter, Model> implements Wea
     }
 
     @Override
-    public void showWeather(Weather weather) {
-        Weather.ResultsBean resultsBean = weather.getResults().get(0);
-        List<Weather.ResultsBean.DailyBean> daily = resultsBean.getDaily();
+    public void showDailyWeather(DailyWeather dailyWeather) {
+        DailyWeather.ResultsBean resultsBean = dailyWeather.getResults().get(0);
+        List<DailyWeather.ResultsBean.DailyBean> daily = resultsBean.getDaily();
         if (daily != null && !daily.isEmpty()) {
             setTitle(resultsBean.getLocation().getName() + "未来十天天气");
             mWeatherAdapter.clear();
             mWeatherAdapter.addAll(daily);
         }
-        List<Weather.ResultsBean.HourlyBean> hourly = resultsBean.getHourly();
-        if (hourly != null && !hourly.isEmpty()) {
-            setTitle(resultsBean.getLocation().getName() + "今天24小时天气");
-            mWeatherAdapter.clear();
-            mWeatherAdapter.addAll(hourly);
-        }
+    }
+
+    @Override
+    public void showNowWeather(NowWeather nowWeather) {
+        NowWeather.ResultsBean result = nowWeather.getResults().get(0);
+        setTitle(result.getLocation().getName() + "今天24小时天气");
+        mWeatherAdapter.clear();
+        mWeatherAdapter.add(result.getNow().toString());
     }
 }

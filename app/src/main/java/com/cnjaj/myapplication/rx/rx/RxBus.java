@@ -1,6 +1,7 @@
 package com.cnjaj.myapplication.rx.rx;
 
 import android.support.annotation.NonNull;
+import com.cnjaj.myapplication.utils.MyLog;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
@@ -71,7 +72,7 @@ class RxBus {
         }
         Subject<T, T> subject = PublishSubject.create();
         subjectList.add(subject);
-        SLog.d("register", tag + "  size:" + subjectList.size());
+        MyLog.d("register", tag + "  size:" + subjectList.size());
         return subject;
     }
 
@@ -99,7 +100,7 @@ class RxBus {
                 subjects.remove(observable);
             } else {
                 subjectMapper.remove(tag);
-                SLog.d("unregister", tag + "  size:" + subjects.size());
+                MyLog.d("unregister", tag + "  size:" + subjects.size());
             }
         }
         return $();
@@ -116,12 +117,12 @@ class RxBus {
      */
     @SuppressWarnings({"unchecked", "rawtypes"})
     void post(@NonNull Object tag, @NonNull Object content) {
-        SLog.d("post", "eventName: " + tag);
+        MyLog.d("post", "eventName: " + tag);
         List<Subject> subjectList = subjectMapper.get(tag);
         if (!isEmpty(subjectList)) {
             for (Subject subject : subjectList) {
                 subject.onNext(content);
-                SLog.d("onEvent", "eventName: " + tag);
+                MyLog.d("onEvent", "eventName: " + tag);
             }
         }
     }

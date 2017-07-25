@@ -1,6 +1,7 @@
 package com.cnjaj.myapplication.rx.api;
 
-import com.cnjaj.myapplication.rx.entity.Weather;
+import com.cnjaj.myapplication.rx.entity.DailyWeather;
+import com.cnjaj.myapplication.rx.weather.NowWeather;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 import rx.Observable;
@@ -10,8 +11,8 @@ import rx.Observable;
  */
 public interface WeatherApi {
     @GET("weather/daily.json?key=wos8thz2mhge7xdt&language=zh-Hans&unit=c&start=0")
-    Observable<Weather> getFutureWeather(@Query("location") String location, @Query("days") int days);
+    Observable<DailyWeather> getDailyWeather(@Query("location") String location, @Query("days") int days);
 
-    @GET("weather/hourly.json?key=wos8thz2mhge7xdt&language=zh-Hans&unit=c&start=0")
-    Observable<Weather> getCurrentDayWeather(@Query("location") String location, @Query("hours") int hours);
+    @GET("weather/now.json?key=wos8thz2mhge7xdt&language=zh-Hans&unit=c&start=0")
+    Observable<NowWeather> getNowWeather(@Query("location") String location, @Query("hours") int hours);
 }

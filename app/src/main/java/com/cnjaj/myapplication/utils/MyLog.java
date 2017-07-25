@@ -1,7 +1,7 @@
 package com.cnjaj.myapplication.utils;
 
-import com.cnjaj.myapplication.Test;
-import com.tencent.bugly.crashreport.BuglyLog;
+import android.util.Log;
+import com.cnjaj.myapplication.BuildConfig;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,46 +40,46 @@ public class MyLog {
     }
 
     public static void v(Object c, String msg) {
-        if (Test.LOG) {
+        if (BuildConfig.DEBUG) {
             List<String> msgs = splitMsg(msg);
             for (String msg1 : msgs) {
-                BuglyLog.v(c.getClass().getSimpleName(), msg1);
+                Log.v(c.getClass().getSimpleName(), msg1);
             }
         }
     }
 
     public static void v(String tag, String msg) {
-        if (Test.LOG) {
+        if (BuildConfig.DEBUG) {
             List<String> msgs = splitMsg(msg);
             for (String msg1 : msgs) {
-                BuglyLog.v(tag, msg1);
+                Log.v(tag, msg1);
             }
         }
     }
 
     public static void d(String tag, String msg) {
-        if (Test.LOG) {
+        if (BuildConfig.DEBUG) {
             List<String> msgs = splitMsg(msg);
             for (String msg1 : msgs) {
-                BuglyLog.d(tag, msg1);
+                Log.d(tag, msg1);
             }
         }
     }
 
     public static void i(String tag, String msg) {
-        if (Test.LOG) {
+        if (BuildConfig.DEBUG) {
             List<String> msgs = splitMsg(msg);
             for (String msg1 : msgs) {
-                BuglyLog.i(tag, msg1);
+                Log.i(tag, msg1);
             }
         }
     }
 
     public static void e(String tag, String msg) {
-        if (Test.LOG) {
+        if (BuildConfig.DEBUG) {
             List<String> msgs = splitMsg(msg);
             for (String msg1 : msgs) {
-                BuglyLog.e(tag, msg1);
+                Log.e(tag, msg1);
             }
         }
     }

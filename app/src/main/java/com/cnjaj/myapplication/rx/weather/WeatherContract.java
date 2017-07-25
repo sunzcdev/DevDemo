@@ -3,8 +3,8 @@ package com.cnjaj.myapplication.rx.weather;
 import com.cnjaj.myapplication.rx.base.BaseModel;
 import com.cnjaj.myapplication.rx.base.BasePresenter;
 import com.cnjaj.myapplication.rx.base.BaseView;
+import com.cnjaj.myapplication.rx.entity.DailyWeather;
 import com.cnjaj.myapplication.rx.entity.Position;
-import com.cnjaj.myapplication.rx.entity.Weather;
 import rx.Observable;
 
 /**
@@ -12,15 +12,17 @@ import rx.Observable;
  */
 public class WeatherContract {
     public interface WeatherModel extends BaseModel {
-        Observable<Weather> getFutureWeather(String position, int days);
+        Observable<DailyWeather> getDailyWeather(String position, int days);
 
-        Observable<Weather> getTodayWeather(String position);
+        Observable<NowWeather> getNowWeather(String position);
 
         Observable<Position> getCurrentPosition();
     }
 
     public interface WeatherView extends BaseView {
-        void showWeather(Weather weather);
+        void showDailyWeather(DailyWeather dailyWeather);
+
+        void showNowWeather(NowWeather nowWeather);
     }
 
     public static abstract class WeatherPresenter extends BasePresenter<WeatherModel, WeatherView> {
