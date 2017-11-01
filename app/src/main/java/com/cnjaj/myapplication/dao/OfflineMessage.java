@@ -3,7 +3,7 @@ package com.cnjaj.myapplication.dao;
 import com.cnjaj.myapplication.dao.inject.Column;
 import com.cnjaj.myapplication.utils.DateUtils;
 
-public class OfflineMessage {
+public class OfflineMessage implements IDao {
     /**
      * 插入数据库中的主键id
      */
@@ -16,6 +16,7 @@ public class OfflineMessage {
     private String positionreportstate;//盲区标识
     private String current_mileage;//里程
     private String current_machine_speed;//转速
+    private DBDao dbDao = DBDao.getInstance();
 
     public int getId() {
         return id;
@@ -75,5 +76,23 @@ public class OfflineMessage {
                 ", current_mileage='" + current_mileage + '\'' +
                 ", current_machine_speed='" + current_machine_speed + '\'' +
                 '}';
+    }
+
+    @Override
+    public int save() {
+        dbDao.insert(this);
+        return 0;
+    }
+
+    @Override
+    public int del() {
+        dbDao.delByBeans(this);
+        return 0;
+    }
+
+    @Override
+    public int update() {
+        dbDao.update(this);
+        return 0;
     }
 }

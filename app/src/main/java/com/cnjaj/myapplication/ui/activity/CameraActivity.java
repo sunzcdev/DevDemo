@@ -27,7 +27,6 @@ public class CameraActivity extends AppCompatActivity implements Camera.PreviewC
     private static final int REQUEST_CAMERA = 0x11;
     private AndroidCamera mCamera;
     private SurfaceView cameraView;
-    private boolean takePhoto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

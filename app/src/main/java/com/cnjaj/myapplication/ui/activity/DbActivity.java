@@ -48,7 +48,7 @@ public class DbActivity extends AppCompatActivity {
         message.setByteValue(abyte++);
         message.setDoubleValue(adouble++);
         message.setStringValue(DateUtils.getCurrentTime());
-        dbDao.insert(message);
+        message.save();
         notifyListviewUpdate();
     }
 
@@ -58,14 +58,14 @@ public class DbActivity extends AppCompatActivity {
             DataBean bean = beans.get(0);
             bean.setStringValue(DateUtils.getCurrentTime());
             bean.setIsupload(1);
-            dbDao.update(bean);
+            bean.update();
         }
         notifyListviewUpdate();
     }
 
     public void delData(View view) {
         DataBean bean = adapter.getItem(0);
-        dbDao.delByBeans(DataBean.class, bean);
+        bean.del();
         notifyListviewUpdate();
     }
 }
