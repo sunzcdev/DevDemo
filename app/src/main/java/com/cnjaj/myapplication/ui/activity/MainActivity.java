@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
             add(new NavigationItem("服务测试", MessengerActivity.class));
             add(new NavigationItem("照相测试", CameraActivity.class));
             add(new NavigationItem("数据库测试", DbActivity.class));
+            add(new NavigationItem("热更新", DbActivity.class));
         }
     };
 

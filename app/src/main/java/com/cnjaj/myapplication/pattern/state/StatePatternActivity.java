@@ -13,6 +13,11 @@ public class StatePatternActivity extends AppCompatActivity {
         setContentView(R.layout.activity_state_pattern);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
     public void comment(View view) {
         StateManager.getUserState().comment(this, "这个商品挺不错的，值得买");
     }

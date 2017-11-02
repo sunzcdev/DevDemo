@@ -11,6 +11,8 @@ import com.cnjaj.myapplication.dao.DBDao;
 import com.cnjaj.myapplication.dao.DataBean;
 import com.cnjaj.myapplication.dao.Wrapper;
 import com.cnjaj.myapplication.utils.DateUtils;
+import com.cnjaj.myapplication.utils.ViewUtils;
+import com.tencent.bugly.beta.Beta;
 
 import java.util.List;
 
@@ -29,12 +31,19 @@ public class DbActivity extends AppCompatActivity {
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
         listview.setAdapter(adapter);
         dbDao = new DBDao(this);
+        Beta.checkUpgrade();
     }
 
     private void notifyListviewUpdate() {
         List<DataBean> beans = dbDao.queryAllByIsUpload(DataBean.class);
         adapter.clear();
         adapter.addAll(beans);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ViewUtils.toast(this, "补丁已经成功应用-------");
     }
 
     public void insertData(View view) {
