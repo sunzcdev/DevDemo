@@ -1,4 +1,4 @@
-package com.cnjaj.myapplication.dao;
+package net.sunzc.dao;
 
 public class Wrapper {
     private String title;

@@ -1,4 +1,4 @@
-package com.cnjaj.myapplication.dao.inject;
+package net.sunzc.dao.inject;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

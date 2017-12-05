@@ -1,11 +1,11 @@
-package com.cnjaj.myapplication.dao.inject;
+package net.sunzc.dao.inject;
 
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.text.TextUtils;
 import com.alibaba.fastjson.JSON;
-import com.cnjaj.myapplication.dao.OfflineMessage;
 import com.cnjaj.myapplication.utils.MyLog;
+import net.sunzc.dao.OfflineMessage;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

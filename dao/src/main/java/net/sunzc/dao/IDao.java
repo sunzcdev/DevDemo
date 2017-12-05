@@ -1,4 +1,4 @@
-package com.cnjaj.myapplication.dao;
+package net.sunzc.dao;
 
 /**
  * Created by Administrator on 2017/7/26.

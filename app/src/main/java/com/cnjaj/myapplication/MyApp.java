@@ -2,14 +2,19 @@ package com.cnjaj.myapplication;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.support.multidex.MultiDex;
 import android.widget.Toast;
 import com.facebook.stetho.Stetho;
 import com.jayfeng.lesscode.core.$;
+import com.jayfeng.lesscode.core.SharedPreferenceLess;
 import com.tencent.bugly.Bugly;
 import com.tencent.bugly.beta.Beta;
 import com.tencent.bugly.beta.interfaces.BetaPatchListener;
 import com.tencent.bugly.beta.upgrade.UpgradeStateListener;
+import com.tencent.bugly.crashreport.CrashReport;
 
 import java.util.Locale;
 
@@ -17,6 +22,8 @@ import java.util.Locale;
  * Created by Administrator on 2016/11/1.
  */
 public class MyApp extends Application {
+
+    private static final String VERSION_CODE = "version_code";
 
     @Override
     public void onCreate() {
@@ -26,6 +33,18 @@ public class MyApp extends Application {
                 .context(this)
                 .build();
         initBugly();
+        int versionCode = SharedPreferenceLess.$get(VERSION_CODE, 0);
+        PackageManager pm = getPackageManager();
+        try {
+            PackageInfo info = pm.getPackageInfo(getPackageName(), PackageManager.GET_GIDS);
+            if (info.versionCode > versionCode) {
+                SharedPreferenceLess.$put(VERSION_CODE, info.versionCode);
+                CrashReport.setUserSceneTag(this, 59745);
+                CrashReport.postCatchedException(new Exception("版本升级:" + info.versionCode));
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     private void initBugly() {
@@ -50,7 +69,7 @@ public class MyApp extends Application {
 
             @Override
             public void onUpgradeSuccess(boolean b) {
-
+                Toast.makeText(getApplicationContext(), "升级成功" + b, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -89,7 +108,7 @@ public class MyApp extends Application {
             @Override
             public void onDownloadSuccess(String patchFilePath) {
                 Toast.makeText(getApplicationContext(), patchFilePath, Toast.LENGTH_SHORT).show();
-//                Beta.applyDownloadedPatch();
+                Beta.applyDownloadedPatch();
             }
 
             @Override
@@ -113,6 +132,8 @@ public class MyApp extends Application {
             }
         };
         Bugly.init(this, "f1a93a40bc", true);
+        Bugly.setUserId(this, Build.ID);
+
     }
 
     @Override

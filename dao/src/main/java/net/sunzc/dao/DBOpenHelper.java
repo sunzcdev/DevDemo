@@ -1,9 +1,9 @@
-package com.cnjaj.myapplication.dao;
+package net.sunzc.dao;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import com.cnjaj.myapplication.dao.inject.InjectUtils;
+import net.sunzc.dao.inject.InjectUtils;
 
 public class DBOpenHelper extends SQLiteOpenHelper {
 

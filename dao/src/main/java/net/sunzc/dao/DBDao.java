@@ -1,12 +1,12 @@
-package com.cnjaj.myapplication.dao;
+package net.sunzc.dao;
 
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.text.TextUtils;
-import com.cnjaj.myapplication.dao.inject.InjectUtils;
 import com.cnjaj.myapplication.utils.DateUtils;
 import com.cnjaj.myapplication.utils.MyLog;
+import net.sunzc.dao.inject.InjectUtils;
 
 import java.util.ArrayList;
 import java.util.List;

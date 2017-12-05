@@ -10,8 +10,8 @@ android {
         applicationId "com.cnjaj.myapplication"
         minSdkVersion 21
         targetSdkVersion 25
-        versionCode 200
-        versionName "2.0"
+        versionCode 202
+        versionName "2.2"
 
         buildConfigField("String", "WEATHER_API_URL", "\"${WEATHER_API_URL}\"")
     }

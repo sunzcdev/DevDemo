@@ -1,7 +1,7 @@
-package com.cnjaj.myapplication.dao;
+package net.sunzc.dao;
 
-import com.cnjaj.myapplication.dao.inject.Column;
-import com.cnjaj.myapplication.dao.inject.Table;
+import net.sunzc.dao.inject.Column;
+import net.sunzc.dao.inject.Table;
 
 @Table
 public class DataBean extends OfflineMessage {

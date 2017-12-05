@@ -1,7 +1,7 @@
-package com.cnjaj.myapplication.dao;
+package net.sunzc.dao;
 
-import com.cnjaj.myapplication.dao.inject.Column;
 import com.cnjaj.myapplication.utils.DateUtils;
+import net.sunzc.dao.inject.Column;
 
 public class OfflineMessage implements IDao {
     /**

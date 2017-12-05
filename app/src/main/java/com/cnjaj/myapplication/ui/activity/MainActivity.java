@@ -16,6 +16,7 @@ import com.cnjaj.myapplication.pattern.state.StatePatternActivity;
 import com.cnjaj.myapplication.rx.weather.RxActivity;
 import com.cnjaj.myapplication.service.MessengerActivity;
 import com.jayfeng.lesscode.core.SharedPreferenceLess;
+import com.tencent.bugly.crashreport.CrashReport;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        CrashReport.setUserSceneTag(this, 59746);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ListView mNavigationPanel = (ListView) findViewById(R.id.navigation_panel);
